@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0529DCCBF0083F448C081A0 /* Pods_FireFun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE360CE2EA01540922FD1C4 /* Pods_FireFun.framework */; };
 		FA9267EB1E5E785600EBFAF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9267EA1E5E785600EBFAF1 /* AppDelegate.swift */; };
 		FA9267ED1E5E785600EBFAF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9267EC1E5E785600EBFAF1 /* ViewController.swift */; };
 		FA9267F01E5E785600EBFAF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA9267EE1E5E785600EBFAF1 /* Main.storyboard */; };
 		FA9267F21E5E785600EBFAF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9267F11E5E785600EBFAF1 /* Assets.xcassets */; };
 		FA9267F51E5E785600EBFAF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA9267F31E5E785600EBFAF1 /* LaunchScreen.storyboard */; };
+		FA9267FD1E5E796C00EBFAF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA9267FC1E5E796C00EBFAF1 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6AE360CE2EA01540922FD1C4 /* Pods_FireFun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FireFun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86E8A1EC09089CF824640201 /* Pods-FireFun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireFun.release.xcconfig"; path = "Pods/Target Support Files/Pods-FireFun/Pods-FireFun.release.xcconfig"; sourceTree = "<group>"; };
 		FA9267E71E5E785600EBFAF1 /* FireFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9267EA1E5E785600EBFAF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA9267EC1E5E785600EBFAF1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +26,8 @@
 		FA9267F11E5E785600EBFAF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA9267F41E5E785600EBFAF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA9267F61E5E785600EBFAF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA9267FC1E5E796C00EBFAF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FEE15508370FB615F5C5F931 /* Pods-FireFun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireFun.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FireFun/Pods-FireFun.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0529DCCBF0083F448C081A0 /* Pods_FireFun.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		828F64AFB8217C6C9DD5A282 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6AE360CE2EA01540922FD1C4 /* Pods_FireFun.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A40C26DD265E75AA2CF91888 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FEE15508370FB615F5C5F931 /* Pods-FireFun.debug.xcconfig */,
+				86E8A1EC09089CF824640201 /* Pods-FireFun.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FA9267DE1E5E785600EBFAF1 = {
 			isa = PBXGroup;
 			children = (
 				FA9267E91E5E785600EBFAF1 /* FireFun */,
 				FA9267E81E5E785600EBFAF1 /* Products */,
+				A40C26DD265E75AA2CF91888 /* Pods */,
+				828F64AFB8217C6C9DD5A282 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +86,7 @@
 				FA9267F11E5E785600EBFAF1 /* Assets.xcassets */,
 				FA9267F31E5E785600EBFAF1 /* LaunchScreen.storyboard */,
 				FA9267F61E5E785600EBFAF1 /* Info.plist */,
+				FA9267FC1E5E796C00EBFAF1 /* GoogleService-Info.plist */,
 			);
 			path = FireFun;
 			sourceTree = "<group>";
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA9267F91E5E785600EBFAF1 /* Build configuration list for PBXNativeTarget "FireFun" */;
 			buildPhases = (
+				16B1651ED597AC7270BD6A23 /* [CP] Check Pods Manifest.lock */,
 				FA9267E31E5E785600EBFAF1 /* Sources */,
 				FA9267E41E5E785600EBFAF1 /* Frameworks */,
 				FA9267E51E5E785600EBFAF1 /* Resources */,
+				9B4669AF3FF22FB0A9B00CF3 /* [CP] Embed Pods Frameworks */,
+				862CE5BEA42C65C1282A4CEA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,12 +154,61 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA9267F51E5E785600EBFAF1 /* LaunchScreen.storyboard in Resources */,
+				FA9267FD1E5E796C00EBFAF1 /* GoogleService-Info.plist in Resources */,
 				FA9267F21E5E785600EBFAF1 /* Assets.xcassets in Resources */,
 				FA9267F01E5E785600EBFAF1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		16B1651ED597AC7270BD6A23 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		862CE5BEA42C65C1282A4CEA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FireFun/Pods-FireFun-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B4669AF3FF22FB0A9B00CF3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FireFun/Pods-FireFun-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA9267E31E5E785600EBFAF1 /* Sources */ = {
@@ -258,6 +337,7 @@
 		};
 		FA9267FA1E5E785600EBFAF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FEE15508370FB615F5C5F931 /* Pods-FireFun.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FireFun/Info.plist;
@@ -270,6 +350,7 @@
 		};
 		FA9267FB1E5E785600EBFAF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86E8A1EC09089CF824640201 /* Pods-FireFun.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FireFun/Info.plist;
