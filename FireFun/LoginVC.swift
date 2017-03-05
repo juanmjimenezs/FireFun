@@ -18,7 +18,16 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //Vamos directamente al Home si el usuario ya estaba logueado
+        if let _ = FIRAuth.auth()?.currentUser {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home")
+            self.present(vc!, animated: true, completion: nil)
+        }
     }
     
     @IBAction func loginAction(_ sender: UIButton) {
