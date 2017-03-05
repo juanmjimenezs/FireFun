@@ -10,6 +10,13 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
+struct Note {
+    let uid: String
+    var title: String
+    var description: String?
+    let createdAt: Double
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var myTextField: UITextField!
@@ -20,7 +27,7 @@ class ViewController: UIViewController {
     var ref: FIRDatabaseReference?
     var handle: FIRDatabaseHandle?
     
-    var myList: [[String:String]] = [[String:String]]()
+    var myList: [Note] = [Note]()
     var userUid = ""
     
     
@@ -35,21 +42,25 @@ class ViewController: UIViewController {
         }
         
         //Así pintamos cada uno de las notas del usuario en BD
-        self.handle = self.ref?.child("notes").queryOrdered(byChild: "userUid").queryEqual(toValue: self.userUid).observe(.childAdded, with: { (snapshot) in
-            if var item = snapshot.value as? [String:String] {
-                item["uid"] = snapshot.key
-                self.myList.insert(item, at: 0)//Así cada nota aparece de primera
+        self.handle = self.ref?.child("notes").child(self.userUid).queryOrdered(byChild: "createdAt").observe(.childAdded, with: { (snapshot) in
+            
+            if var item = snapshot.value as? [String : Any] {
+
+                let note = Note(uid: snapshot.key, title: item["title"] as! String, description: item["description"] as! String?, createdAt: item["createdAt"] as! Double)
+                self.myList.insert(note, at: 0)//Así cada nota aparece de primera
                 self.myTableView.reloadData()
             }
         })
         
         //Así actualizamos los datos si el usuario edita una nota desde otro dispositivo
-        self.handle = self.ref?.child("notes").queryOrdered(byChild: "userUid").queryEqual(toValue: self.userUid).observe(.childChanged, with: { (snapshot) in
+        self.handle = self.ref?.child("notes").child(self.userUid).queryOrdered(byChild: "createdAt").observe(.childChanged, with: { (snapshot) in
+
             if let item = snapshot.value as? [String:String] {
+
                 //Si se encuentra en el array la nota que se actualizó
                 if let index = self.searchNoteBy(key: snapshot.key) {
-                    self.myList[index]["title"] = item["title"]
-                    self.myList[index]["description"] = item["description"]
+                    self.myList[index].title = item["title"]!
+                    self.myList[index].description = item["description"]
                     self.myTableView.reloadData()
                 }
             }
@@ -59,7 +70,7 @@ class ViewController: UIViewController {
     ///Retorna el index de la nota indicada por parametro
     func searchNoteBy(key: String) -> Int? {
         for (index, note) in self.myList.enumerated() {
-            if note["uid"] == key {
+            if note.uid == key {
                 return index
             }
         }
@@ -70,15 +81,11 @@ class ViewController: UIViewController {
     @IBAction func saveBtn(_ sender: UIButton) {
         if let title = self.myTextField.text {
             
-            let date = Date()
-            let formatter = DateFormatter()
-            //formatter.dateFormat = "dd.MM.yyyy"
-            formatter.dateStyle = .medium
-            formatter.timeStyle = .medium
-            
-            if let key = self.ref?.child("notes").childByAutoId().key {
-                let notes = ["userUid": self.userUid, "title": title, "description": self.descriptionTextField.text!, "date": formatter.string(from: date)] as [String : Any]
-                let childUpdates = ["/notes/\(key)": notes]
+            if let key = self.ref?.child("notes").child(self.userUid).childByAutoId().key {
+                let date = Date()
+                
+                let notes = ["title": title, "description": self.descriptionTextField.text!, "createdAt": date.timeIntervalSince1970] as [String : Any]
+                let childUpdates = ["/notes/\(self.userUid)/\(key)": notes]
                 self.ref?.updateChildValues(childUpdates)
             }
             
@@ -108,8 +115,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        cell.textLabel?.text = self.myList[indexPath.row]["title"]
-        cell.detailTextLabel?.text = self.myList[indexPath.row]["description"]
+        cell.textLabel?.text = self.myList[indexPath.row].title
+        cell.detailTextLabel?.text = self.myList[indexPath.row].description
         
         return cell
     }
