@@ -54,13 +54,11 @@ class ViewController: UIViewController {
         
         //Así actualizamos los datos si el usuario edita una nota desde otro dispositivo
         self.handle = self.ref?.child("notes").child(self.userUid).queryOrdered(byChild: "createdAt").observe(.childChanged, with: { (snapshot) in
-
-            if let item = snapshot.value as? [String:String] {
-
+            if let item = snapshot.value as? [String : Any] {
                 //Si se encuentra en el array la nota que se actualizó
                 if let index = self.searchNoteBy(key: snapshot.key) {
-                    self.myList[index].title = item["title"]!
-                    self.myList[index].description = item["description"]
+                    self.myList[index].title = item["title"]! as! String
+                    self.myList[index].description = item["description"] as! String?
                     self.myTableView.reloadData()
                 }
             }
