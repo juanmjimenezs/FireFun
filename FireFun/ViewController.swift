@@ -118,4 +118,27 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    //Habilita las opciones que aparecen en la fila al hacer swipe
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    //La acción que se ejecuta cuando se presiona una de las opciones de la celda
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let uid = self.myList[indexPath.row].uid
+            //Borramos el registro en firebase
+            self.ref?.child("notes").child(self.userUid).child(uid).removeValue(completionBlock: { (error, reference) in
+                if error == nil {
+                    //Eliminamos el elemento del array
+                    self.myList.remove(at: indexPath.row)
+                    //Eliminamos la fila de la tableView
+                    self.myTableView.deleteRows(at: [indexPath], with: .fade)
+                } else {
+                    print(error!)
+                }
+            })
+        }
+    }
 }
